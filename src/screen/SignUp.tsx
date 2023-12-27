@@ -3,8 +3,9 @@ import React, {useState, useEffect} from 'react';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {supabase} from '../lib/supabase';
 import {Button, Input} from 'react-native-elements';
+import {StackNavScreenProps} from '../navigation/StackNav';
 
-const Signup = () => {
+const Signup = ({navigation, route}: StackNavScreenProps) => {
   const insets = useSafeAreaInsets();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -51,6 +52,12 @@ const Signup = () => {
           title="Sign up"
           disabled={loading}
           onPress={() => signUpWithEmail()}
+        />
+      </View>
+      <View style={[styles.verticallySpaced, {paddingHorizontal: 10}]}>
+        <Button
+          title="Go to Sign In"
+          onPress={() => navigation.navigate('SignIn')}
         />
       </View>
     </View>
