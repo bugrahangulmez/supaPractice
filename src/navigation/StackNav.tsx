@@ -1,6 +1,6 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {SignIn, SignUp} from '../screen';
+import {Home, SignIn, SignUp} from '../screen';
 
 type StackNavParamList = {
   Home: undefined;
@@ -17,6 +17,7 @@ export default function StackNav() {
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="SignUp" component={SignUp} />
       <Stack.Screen name="SignIn" component={SignIn} />
+      <Stack.Screen name="Home" component={Home} />
     </Stack.Navigator>
   );
 }

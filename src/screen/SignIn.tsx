@@ -17,9 +17,13 @@ const Login = ({navigation}: StackNavScreenProps) => {
       email,
       password,
     });
-    if (error) Alert.alert(error.message);
+    if (error) {
+      Alert.alert(error.message);
+      return;
+    }
     console.log(data);
     setLoading(false);
+    navigation.navigate('Home');
   }
 
   return (
