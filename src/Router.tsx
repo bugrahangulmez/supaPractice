@@ -1,13 +1,13 @@
 import {NavigationContainer} from '@react-navigation/native';
-import StackNav from './navigation/StackNav';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import ReduxProvider from './redux/ReduxProvider';
+import TabBarNav from './navigation/TabBarNav';
 
 function Main() {
   return (
     <NavigationContainer>
       <SafeAreaProvider>
-        <StackNav />
+        <TabBarNav />
       </SafeAreaProvider>
     </NavigationContainer>
   );
@@ -16,7 +16,7 @@ function Main() {
 export default function App() {
   return (
     <ReduxProvider>
-      <App />
+      <Main />
     </ReduxProvider>
   );
 }

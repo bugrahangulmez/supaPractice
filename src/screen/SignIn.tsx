@@ -4,12 +4,16 @@ import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {Button, Input} from 'react-native-elements';
 import {supabase} from '../lib/supabase';
 import {StackNavScreenProps} from '../navigation/StackNav';
+import {useAppDispatch} from '../redux/hooks';
+import {setUser} from '../redux/features/userSlice';
 
 const Login = ({navigation}: StackNavScreenProps) => {
   const insest = useSafeAreaInsets();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+
+  const dispatch = useAppDispatch();
 
   async function signInWithEmail() {
     setLoading(true);
@@ -21,7 +25,8 @@ const Login = ({navigation}: StackNavScreenProps) => {
       Alert.alert(error.message);
       return;
     }
-    console.log(data);
+    console.log(data.user.id);
+    dispatch(setUser({id: data.user.id, email: data.user.email as string}));
     setLoading(false);
     navigation.navigate('Home');
   }
